@@ -1,8 +1,38 @@
 # Author : Mikita Yakavenka
-  # Jira ID oc-140
+  # Jira ID oc-915(related to oc-140)
 
 
 Feature: Add an appointment Medical Center
+
+  Scenario Outline: Create appointment typing different characters into info field
+    Given I open url "https://medicenter-qa2.vercel.app/"
+    When element with xpath "//h1[text()='Medical Center']" should contain text "Medical Center"
+    When I click on element with xpath "//button[contains(text(),'Login')]"
+    When I wait for element with xpath "//a[contains(text(),'Back to home')]" to be present
+    When I type <text1> into element with xpath <xpath2>
+    When I type <text2> into element with xpath <xpath3>
+    When I click on element with xpath "//button[@type='submit']"
+    When I wait for element with xpath "//*[contains(text(),'James Johnson')]" to be present
+    When I click on element with xpath "//button[@type='button']"
+    Then I wait for element with xpath "//span[contains(text(),'Make an appointment')]" to be present
+    Then I type <text3> into element with xpath <xpath7>
+    Then element with xpath "//label[contains(text(),'Specialist')]" should be present
+    Then I wait for <sec> sec
+    Then I click on element with xpath <xpath9>
+    Then I type <text4> into element with xpath <xpath10>
+    Then I wait for <sec> sec
+    Then I click on element with xpath <xpath11>
+    And I click on element with xpath "//button[@type='submit']"
+    And I wait for element with xpath <xpath12> to be present
+    Examples:
+      |  xpath2                 | text1                | text2    | xpath3                   | text3      | xpath7                      | sec | xpath9                                                           | text4        | xpath10                | xpath11                                       | xpath12                                                                                            |
+      | "//input[@id='email']" | "patient1@gmail.com" | "abc123" | "//input[@id='password']"| "Headache" | "//textarea[@name='note']"    | 2 | "//select/option[@value='24b6d9ff-0742-450f-8d89-b083caad0336']" | "13/05/2024" | "//input[@type='date']" | "//button[@value='2024-05-13T09:00:00.000Z']" | "//article[div[h3[contains(text(),'Monday 13 May 2024, 11:00')]]//p[contains(text(),'Headache')]]" |
+      | "//input[@id='email']" | "patient1@gmail.com" | "abc123" | "//input[@id='password']"| "1234567890" | "//textarea[@name='note']"    | 2 | "//select/option[@value='24b6d9ff-0742-450f-8d89-b083caad0336']" | "13/05/2024" | "//input[@type='date']" | "//button[@value='2024-05-13T09:15:00.000Z']" | "//article[div[h3[contains(text(),'Monday 13 May 2024, 11:15')]]//p[contains(text(),'1234567890')]]" |
+      | "//input[@id='email']" | "patient1@gmail.com" | "abc123" | "//input[@id='password']"| "@#$%^&*(" | "//textarea[@name='note']"    | 2 | "//select/option[@value='24b6d9ff-0742-450f-8d89-b083caad0336']" | "13/05/2024" | "//input[@type='date']" | "//button[@value='2024-05-13T09:30:00.000Z']" | "//article[div[h3[contains(text(),'Monday 13 May 2024, 11:30')]]//p[contains(text(),'@#$%^&*(')]]" |
+      | "//input[@id='email']" | "patient1@gmail.com" | "abc123" | "//input[@id='password']"| "" | "//textarea[@name='note']"    | 2 | "//select/option[@value='24b6d9ff-0742-450f-8d89-b083caad0336']" | "13/05/2024" | "//input[@type='date']" | "//button[@value='2024-05-13T09:45:00.000Z']" | "//article[div[h3[contains(text(),'Monday 13 May 2024, 11:45')]]//p[contains(text(),'')]]" |
+      | "//input[@id='email']" | "patient1@gmail.com" | "abc123" | "//input[@id='password']"| "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii" | "//textarea[@name='note']"    | 2 | "//select/option[@value='24b6d9ff-0742-450f-8d89-b083caad0336']" | "13/05/2024" | "//input[@type='date']" | "//button[@value='2024-05-13T10:15:00.000Z']" | "//article[div[h3[contains(text(),'Monday 13 May 2024, 12:15')]]//p[contains(text(),'iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii')]]" |
+      | "//input[@id='email']" | "patient1@gmail.com" | "abc123" | "//input[@id='password']"| "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii" | "//textarea[@name='note']"    | 2 | "//select/option[@value='24b6d9ff-0742-450f-8d89-b083caad0336']" | "13/05/2024" | "//input[@type='date']" | "//button[@value='2024-05-13T10:30:00.000Z']" | "//p[contains(text(),'Note must be less than 500 characters long')]" |
+
 
   Scenario: Registered patient  can add an appointment
     Given I open url "https://medicenter-qa2.vercel.app/"
