@@ -3,7 +3,7 @@
 
 Feature: Login Medical Center
 
-
+  @medicenterM
   Scenario Outline: Login Date Driven Scenarios
     Given I open url "https://medicenter-qa2.vercel.app/"
     Then element with xpath "//h1[text()='Medical Center']" should contain text "Medical Center"
@@ -29,7 +29,7 @@ Feature: Login Medical Center
       | "//input[@id='email']" | "patient1@gmail.com"       | ""         | "//input[@id='password']" | "//a[contains(text(),'Back to home')]"  | "//span[contains(text(),'Invalid login credentials')]" |
       | "//input[@id='email']" | ""                         | ""         | "//input[@id='password']" | "//a[contains(text(),'Back to home')]"  | "//span[contains(text(),'Invalid login credentials')]" |
 
-
+  @medicenterM
   Scenario Outline: Forgot your password option date driven scenarios
     Given I open url "https://medicenter-qa2.vercel.app/"
     When element with xpath "//h1[text()='Medical Center']" should contain text "Medical Center"
@@ -52,7 +52,7 @@ Feature: Login Medical Center
       | ""                           | "//input[@id='email']" | "//span[contains(text(),'Password recovery requires an email')]"                            |
       | "lol@gmail.com"              | "//input[@id='email']" | "//span[contains(text(),'Not registered email')]"                                           |
 
-
+  @medicenterM
   Scenario Outline: Login/password field date driven scenarios
     Given I open url "https://medicenter-qa2.vercel.app/"
     Then element with xpath "//h1[text()='Medical Center']" should contain text "Medical Center"
@@ -75,7 +75,7 @@ Feature: Login Medical Center
       | "//input[@id='email']" | "patient"            | "abc123"                            | "//input[@id='password']" | "//*[contains(text(),'To signup, please provide your email')]"          |
       | "//input[@id='email']" | ""                   | ""                                  | "//input[@id='password']" | "//*[contains(text(),'Signup requires a valid password')]"              |
 
-
+  @medicenterM
   Scenario: Login with valid credentials
     Given I open url "https://medicenter-qa2.vercel.app/"
     Then element with xpath "//h1[text()='Medical Center']" should contain text "Medical Center"
@@ -87,7 +87,7 @@ Feature: Login Medical Center
     And I wait for element with xpath "//h1[text()='Medical Center']" to be present
     And I wait for element with xpath "//*[contains(text(),'James Johnson')]" to be present
 
-
+  @medicenterM
   Scenario: Login with valid email address and invalid password
     Given I open url "https://medicenter-qa2.vercel.app/"
     Then element with xpath "//h1[text()='Medical Center']" should contain text "Medical Center"
@@ -98,7 +98,7 @@ Feature: Login Medical Center
     Then I click on element with xpath "//button[@type='submit']"
     And I wait for element with xpath "//span[contains(text(),'Invalid login credentials')]" to be present
 
-
+  @medicenterM
   Scenario: Login with invalid email address and valid password
     Given I open url "https://medicenter-qa2.vercel.app/"
     Then element with xpath "//h1[text()='Medical Center']" should contain text "Medical Center"
@@ -109,6 +109,7 @@ Feature: Login Medical Center
     Then I click on element with xpath "//button[@type='submit']"
     And I wait for element with xpath "//span[contains(text(),'Invalid login credentials')]" to be present
 
+  @medicenterM
   Scenario: Login with existing valid email of another account and valid password
     Given I open url "https://medicenter-qa2.vercel.app/"
     Then element with xpath "//h1[text()='Medical Center']" should contain text "Medical Center"
@@ -119,6 +120,7 @@ Feature: Login Medical Center
     Then I click on element with xpath "//button[@type='submit']"
     And I wait for element with xpath "//span[contains(text(),'Invalid login credentials')]" to be present
 
+  @medicenterM
   Scenario: Login with valid email address and empty "Your Password" field
     Given I open url "https://medicenter-qa2.vercel.app/"
     Then element with xpath "//h1[text()='Medical Center']" should contain text "Medical Center"
@@ -129,6 +131,7 @@ Feature: Login Medical Center
     Then I click on element with xpath "//button[@type='submit']"
     And I wait for element with xpath "//span[contains(text(),'Invalid login credentials')]" to be present
 
+  @medicenterM
   Scenario: Logout functionality
     Given I open url "https://medicenter-qa2.vercel.app/"
     Then element with xpath "//h1[text()='Medical Center']" should contain text "Medical Center"
@@ -141,6 +144,7 @@ Feature: Login Medical Center
     And I click on element with xpath "//button[contains(text(),'Logout')]"
     And I wait for element with xpath "//h2[text()='Login or create a new account to make an appointment']" to be present
 
+  @medicenterM
   Scenario: "Email address" field accepts whitespaces
     Given I open url "https://medicenter-qa2.vercel.app/"
     Then element with xpath "//h1[text()='Medical Center']" should contain text "Medical Center"
@@ -151,6 +155,7 @@ Feature: Login Medical Center
     Then I click on element with xpath "//button[@type='submit']"
     And element with xpath "//h2[contains(text(),'Your appointments')]" should not be present
 
+  @medicenterM
   Scenario: Password field accepts whitespaces
     Given I open url "https://medicenter-qa2.vercel.app/"
     Then element with xpath "//h1[text()='Medical Center']" should contain text "Medical Center"
@@ -161,6 +166,7 @@ Feature: Login Medical Center
     Then I click on element with xpath "//button[@type='submit']"
     And I wait for element with xpath "//span[contains(text(),'Invalid login credentials')]" to be present
 
+  @medicenterM
   Scenario:  "Password" field accepts all characters
     Given I open url "https://medicenter-qa2.vercel.app/"
     Then element with xpath "//h1[text()='Medical Center']" should contain text "Medical Center"
@@ -171,6 +177,7 @@ Feature: Login Medical Center
     Then I click on element with xpath "//button[@type='submit']"
     And I wait for element with xpath "//h2[contains(text(),'Your appointments')]" to be present
 
+  @medicenterM
   Scenario: Create account with password longer than 32 characters
     Given I open url "https://medicenter-qa2.vercel.app/"
     Then element with xpath "//h1[text()='Medical Center']" should contain text "Medical Center"
@@ -181,6 +188,7 @@ Feature: Login Medical Center
     Then I click on element with xpath "//button[@type='submit']"
     And I wait for element with xpath "//*[contains(text(),'Check your email')]" to not be present
 
+  @medicenterM
   Scenario: Create account with password of 6 characters
     Given I open url "https://medicenter-qa2.vercel.app/"
     Then element with xpath "//h1[text()='Medical Center']" should contain text "Medical Center"
@@ -191,6 +199,7 @@ Feature: Login Medical Center
     Then I click on element with xpath "//button[@type='submit']"
     And I wait for element with xpath "//*[contains(text(),'Check your email')]" to be present
 
+  @medicenterM
   Scenario: Create account with password shorter than 6 characters
     Given I open url "https://medicenter-qa2.vercel.app/"
     Then element with xpath "//h1[text()='Medical Center']" should contain text "Medical Center"
@@ -201,6 +210,7 @@ Feature: Login Medical Center
     Then I click on element with xpath "//button[@type='submit']"
     And I wait for element with xpath "//span[contains(text(),'Password should be at least 6 characters')]" to be present
 
+  @medicenterM
   Scenario: "Back to home" button works
     Given I open url "https://medicenter-qa2.vercel.app/"
     Then element with xpath "//h1[text()='Medical Center']" should contain text "Medical Center"
