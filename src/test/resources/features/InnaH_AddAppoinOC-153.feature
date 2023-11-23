@@ -1,5 +1,5 @@
 #Author : Inna Havryliuk
-  # Jira ID OC-150 related to OC-153
+  # Jira ID OC-150 related to OC-153.
 
 Feature: Add appointment as an administrator to Medicenter
     #Add appointment as an administrator
