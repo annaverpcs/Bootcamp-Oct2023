@@ -1,7 +1,7 @@
 #Author : Inna Havryliuk
-  # Jira ID OC-153
+  # Jira ID OC-150 related to OC-153
 
-Feature: Medicenter Test Scenarios
+Feature: Add appointment as an administrator to Medicenter
     #Add appointment as an administrator
   Scenario:The administrator adds appointment
     Given I open url "https://medicenter-qa2.vercel.app"
