@@ -1,5 +1,5 @@
 git remote#A: Maria Simovski
-  #Jir ID OC1007
+  #Jir ID OC-1007
 
 Feature: Medicenter Test Scenarios
 
