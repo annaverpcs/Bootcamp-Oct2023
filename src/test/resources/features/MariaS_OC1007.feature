@@ -2,9 +2,9 @@
   #Jir ID OC-1007
 
 
-Feature: Medicenter Test Scenarios
+Feature: Medicenter Test Scenarios Admin and Patient Login Feature
 
-    Scenario: Admin right credentials are accepted
+    Scenario: Admin login with the valid credentials are accepted
       Given I open url "https://medicenter-qa2.vercel.app/"
       Then I should see page title as "Medicenter"
           #Login as admin
@@ -49,7 +49,7 @@ Feature: Medicenter Test Scenarios
       | email xpath1           | email                      | pass       | pass xpath                | xpath3                                                  | xpath4                                                 |
       | "//input[@id='email']" | "administrator1@gmail.com" | "abs321"   | "//input[@id='password']" | "//span[contains(text(),'Invalid login credentials')]"  | "//span[contains(text(),'Invalid login credentials')]" |
       | "//input[@id='email']" | "Ndministrator1@gmail.com" | "abc123"   | "//input[@id='password']" | "//span[contains(text(),'Invalid login credentials')]"  | "//span[contains(text(),'Invalid login credentials')]" |
-      | "//input[@id='email']" | ""                         | ""         | "//input[@id='password']" | "//span[contains(text(),'Invalid login credentials')]"  | "//span[contains(text(),'Invalid login credentials')]" |
+      | "//input[@id='email']" | "administrator1@gmail.com" | ""         | "//input[@id='password']" | "//span[contains(text(),'Invalid login credentials')]"  | "//span[contains(text(),'Invalid login credentials')]" |
       | "//input[@id='email']" | "patient1@gmail.com"       | "abs321"   | "//input[@id='password']" | "//span[contains(text(),'Invalid login credentials')]"  | "//span[contains(text(),'Invalid login credentials')]" |
 
 
