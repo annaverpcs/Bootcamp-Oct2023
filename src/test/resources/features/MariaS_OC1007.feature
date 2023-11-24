@@ -17,7 +17,7 @@ Feature: Medicenter Test Scenarios
       And I wait for element with xpath "//*[contains(text(),'Mary Poppins')]" to be present
       And I wait for element with xpath "//*[contains(text(),'Mary Poppins')]" to be present
 
-  Scenario Outline: Login Date Driven Positive Scenarios
+  Scenario Outline: Login Date Driven Positive Scenarios.
     Given I open url "https://medicenter-qa2.vercel.app/"
     Then element with xpath "//h1[text()='Medical Center']" should contain text "Medical Center"
     Then I click on element with xpath "//button[contains(text(),'Login')]"
