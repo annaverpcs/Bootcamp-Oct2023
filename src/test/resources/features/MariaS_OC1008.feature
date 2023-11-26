@@ -32,11 +32,11 @@ Feature: Medicenter Test Scenarios Admin can add and cancel an appointment
     And I click on element with xpath "//button[contains(text(),'Save')]"
     And I wait for 3 sec
     When I click on element with xpath "//button[contains(text(),'month')]"
-    Then element with xpath "//div[contains(text(),'Maria Test')]" should contain text "Maria Test"
+    Then element with xpath "//td//*[@data-date='2023-11-29']//*[contains(text(),'2p')]/..//div[contains(text(),'Maria Test')]" should contain text "Maria Test"
     # Delete an appointment
-    When I click on element with xpath "//td//*[@data-date='2023-11-29']//*[contains(text(),'Maria Test')]"
+    When I click on element with xpath "//td//*[@data-date='2023-11-29']//*[contains(text(),'2p')]/..//div[contains(text(),'Maria Test')]"
     And I wait for 1 sec
     And element with xpath "//span[contains(text(),'Appointment summary')]" should be present
     Then I click on element with xpath "//button[contains(text(),'Cancel appointment')]"
     And I wait for 1 sec
-    Then element with xpath "//div[contains(text(),'Maria Test')]" should not be present
+    Then element with xpath "//td//*[@data-date='2023-11-29']//*[contains(text(),'2p')]/..//div[contains(text(),'Maria Test')]" should not be present
