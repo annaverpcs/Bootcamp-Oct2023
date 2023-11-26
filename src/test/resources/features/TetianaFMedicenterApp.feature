@@ -1,0 +1,82 @@
+#Author : Tetiana Fil
+  #Jira ID OC-926
+@medicenter
+Feature: Medicenter Test Scenarios
+  @medicenter1
+  Scenario: Login as patient
+    Given I open url "https://medicenter-qa2.vercel.app/"
+    Then I should see page title as "Medicenter"
+     #login to app as patient
+    Then I click on element with xpath "//button[contains(text(),'Login')] "
+    Then I wait for element with xpath "//a[contains(text(),'Back to home')]" to be present
+    And I type "patient1@gmail.com" into element with xpath "//input[@id='email']"
+    And I type "abc123" into element with xpath "//input[@id='password']"
+    Then I click on element with xpath "//button[contains(text(),'Sign in')]"
+    Then I wait for element with xpath "//h1[contains(text(),'James Johnson')]" to be present
+    And I wait for element with xpath "//h1[contains(text(),'Medical Center')]" to be present
+    And element with xpath "//h1[contains(text(),'James Johnson')]" should contain text "James Johnson"
+
+  @medicenter2
+  Scenario Outline: Login to the app data driven scenarios
+    Given I open url "https://medicenter-qa2.vercel.app/"
+    Then I should see page title as "Medicenter"
+    Then I click on element with xpath "//button[contains(text(),'Login')] "
+    Then I wait for element with xpath "//a[contains(text(),'Back to home')]" to be present
+    # used data driven value for login
+    And I type <EmailAddress> into element with xpath "//input[@id='email']"
+    And I type <Password> into element with xpath "//input[@id='password']"
+    Then I click on element with xpath "//button[contains(text(),'Sign in')]"
+    And I wait for element with xpath "//h1[contains(text(),'Medical Center')]" to be present
+    Then I wait for element with xpath <xpathLoggedUsername> to be present
+    # varification
+    And element with xpath <xpathLoggedUsername> should contain text <FullName>
+    Examples:
+      | EmailAddress               | Password        |xpathLoggedUsername                               | FullName        |
+      | "patient1@gmail.com"       | "abc123"        | "//h1[contains(text(),'James Johnson')]"         | "James Johnson" |
+      | "administrator2@gmail.com" | "abc123"        | "//h1[contains(text(),'Calvin Grant')]"          | "Calvin Grant"  |
+      | "patient1@gmail.com"       | "123456"        | "//h1[contains(text(),'James Johnson')]"         | "James Johnson" |
+      | "patient3@gmail.com"       | "abc123"        | "//h1[contains(text(),'James Johnson')]"         | "James Johnson" |
+      | "patient1@gmail.com"       |                 | "//h1[contains(text(),'James Johnson')]"         | "James Johnson" |
+      | "patient1@gmail.com"       | "abc123"        | "//h1[contains(text(),'James Johnson')]"         | "Invalid Name " |
+
+  @medicenter3
+  Scenario: Create an appointment as patient and Delete one
+    Given I open url "https://medicenter-qa2.vercel.app/"
+    Then I should see page title as "Medicenter"
+     #login to app as patient
+    Then I click on element with xpath "//button[contains(text(),'Login')] "
+    Then I wait for element with xpath "//a[contains(text(),'Back to home')]" to be present
+    And I type "patient1@gmail.com" into element with xpath "//input[@id='email']"
+    And I type "abc123" into element with xpath "//input[@id='password']"
+    Then I click on element with xpath "//button[contains(text(),'Sign in')]"
+    Then I wait for element with xpath "//h1[contains(text(),'James Johnson')]" to be present
+    And I wait for element with xpath "//h1[contains(text(),'Medical Center')]" to be present
+   # make an appointment
+    Then I click on element with xpath "//button[contains(text(),'Make an appointment')]"
+    Then I wait for element with xpath "//span[contains(text(),'Make an appointment')]" to be present
+    Then I type "too strong back pain!!!!!!!!!!" into element with xpath "//textarea[@id='note']"
+    Then I click on element with xpath "//select[@name='employee_id']"
+    Then I wait for 2 sec
+    Then I click on element with xpath "//select[@name='employee_id']/option[@value='4bbb674b-7fbd-4246-983a-9e93d659a3c1']"
+    Then I wait for 5 sec
+    Then I type "11/30/2023" into element with xpath "//input[@id='date']"
+    Then I click on element with xpath "//button[contains(text(),'02:00 AM')]"
+    Then I click on element with xpath "//button[contains(text(),'Save')]"
+    #verification
+    And I wait for element with xpath "//p[contains(text(),'too strong back pain!!!!!!!!!!')]" to be present
+    #verification appointment is created
+    Then I wait for element with xpath "//p[contains(text(),'too strong back pain!!!!!!!!!!')]/ancestor::article/div[2]/span" to be present
+    Then I click on element with xpath "//p[contains(text(),'too strong back pain!!!!!!!!!!')]/ancestor::article/div[2]/span"
+    And I wait for 2 sec
+    #confirmation popup window
+    Then element with xpath "//h2[contains(text(),'Are you sure you want to cancel appointment?')]" should contain text "Are you sure you want to cancel appointment?"
+    And I wait for 2 sec
+    Then I click on element with xpath " //button[contains(text(),'Cancel appointment')]"
+    And I wait for 2 sec
+    #verify that the appointment is deleted
+    Then element with xpath "//p[contains(text(),'too strong back pain!!!!!!!!!!')]" should not be present
+    And I wait for 10 sec
+
+
+    
+
