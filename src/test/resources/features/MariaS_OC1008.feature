@@ -20,7 +20,7 @@ Feature: Medicenter Test Scenarios Admin can add and cancel an appointment
     And I click on element with xpath "//button[contains(text(),'Add appointment')]"
     Then element with xpath "//span[contains(text(),'New appointment')]" should be present
     When I type "Maria Test" into element with xpath "//input[@id='user_name']"
-    And I type "Anna we love you" into element with xpath "//textarea[@id='note']"
+    And I type "Test Test" into element with xpath "//textarea[@id='note']"
     Then I click on element with xpath "//select[@name='employee_id']"
     # Select Masha S Cordiologist
     And I click on element with xpath "//select[@name='employee_id']/option[@value='feeac9f6-d5fd-49cd-afcf-df9be18874ac']"
