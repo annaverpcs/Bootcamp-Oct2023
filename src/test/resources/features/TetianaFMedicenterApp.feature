@@ -77,6 +77,43 @@ Feature: Medicenter Test Scenarios
     Then element with xpath "//p[contains(text(),'too strong back pain!!!!!!!!!!')]" should not be present
     And I wait for 10 sec
 
+    @medicenter
+    Scenario: Create new specialist as administrator and Delete one
+      Given I open url "https://medicenter-qa2.vercel.app/"
+      Then I should see page title as "Medicenter"
+     #login to app as administrator
+      Then I click on element with xpath "//button[contains(text(),'Login')] "
+      Then I wait for element with xpath "//a[contains(text(),'Back to home')]" to be present
+      And I type "administrator2@gmail.com" into element with xpath "//input[@id='email']"
+      And I type "abc123" into element with xpath "//input[@id='password']"
+      Then I click on element with xpath "//button[contains(text(),'Sign in')]"
+      Then I wait for element with xpath "//h1[contains(text(),'Calvin Grant')]" to be present
+      And I wait for element with xpath "//h1[contains(text(),'Medical Center')]" to be present
+     #add specialist
+  Then I wait for element with xpath "//button[contains(text(),'Add specialist')]" to be present
+      And I click on element with xpath "//button[contains(text(),'Add specialist')]"
+      And I wait for 2 sec
+      Then I wait for element with xpath "//div[@role='dialog']" to be present
+      Then I type "Tommy" into element with xpath "//input[@id='first_name']"
+      Then I type "Rommy" into element with xpath " //input[@id='last_name']"
+      Then I click on element with xpath "//select[@name='role']"
+      Then I wait for element with xpath "//option[contains(text(),'Doctor')]" to be present
+      Then I type "09:00" into element with xpath "//input[@id='working_hours.tuesday.from']"
+      And I type "16:00" into element with xpath "//input[@id='working_hours.tuesday.to']"
+      Then I click on element with xpath "//button[contains(text(),'Save')]"
+      And I wait for 10 sec
+      Then I open url "https://medicenter-qa2.vercel.app/admin"
+      Then I wait for element with xpath "//td[contains(text(),'Tommy Rommy')]" to be present
+      # verify that the speciaist is created
+      Then element with xpath "//td[contains(text(),'Tommy Rommy')]" should be present
+      Then I click on element with xpath "//tbody/tr[77]/td[3]/div/span[2]/span[contains(text(),'delete')]"
+      And I wait for element with xpath "//div[@role='dialog']" to be present
+      Then I click on element with xpath "//button[contains(text(),'Remove specialist')]"
+      And I wait for 2 sec
+      #verify that specialist is deleted
+      Then I open url "https://medicenter-qa2.vercel.app/admin"
+     Then element with xpath "//td[contains(text(),'Tommy Rommy')]" should not be present
+
 
     
 
