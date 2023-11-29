@@ -3,7 +3,7 @@
 
 Feature: Medicenter Test Scenarios Admin can add and cancel an appointment
 
-  Scenario Outline: : Admin can add and cancel an appointment
+  Scenario: : Admin can add and cancel an appointment
     Given I open url "https://medicenter-qa2.vercel.app/"
     Then I should see page title as "Medicenter"
           #Login as admin

@@ -39,7 +39,7 @@ Feature: Medicenter Test Scenarios Admin and Patient Login Feature
     Then element with xpath "//h1[text()='Medical Center']" should contain text "Medical Center"
     Then I click on element with xpath "//button[contains(text(),'Login')]"
     Then I wait for element with xpath "//a[contains(text(),'Back to home')]" to be present
-    Then I type <email> into element with xpath <email xpath1>
+    Then I type <email> into element with xpath <email xpath>
     Then I type <pass> into element with xpath <pass xpath>
     Then I click on element with xpath "//button[@type='submit']"
     And I wait for element with xpath <xpath3> to be present
