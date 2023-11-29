@@ -59,6 +59,7 @@ Feature: Medicenter Test Scenarios
     And I wait for 2 sec
     Then I click on element with xpath "//select[@name='employee_id']/..//option[6]"
     Then I type "11/23/2023" into element with xpath "//input[@id='date']"
+    And I wait for 2 sec
     Then I click on element with xpath "//button[contains(text(),'04:45 AM')]"
     Then I click on element with xpath "//button[contains(text(),'Save')]"
    #verify that appointment is created
@@ -72,7 +73,7 @@ Feature: Medicenter Test Scenarios
     And I wait for 1 sec
     #verify that the appointment is deleted
     Then element with xpath "//p[contains(text(),'Unique appointment from AnnaV 1')]" should not be present
-    And I wait for 10 sec
+   
 
 
 
