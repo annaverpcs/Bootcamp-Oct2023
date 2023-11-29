@@ -9,3 +9,4 @@ Feature: Session 15 beginning
     Then element with xpath "//input[@id='sb_form_q']" should be present
     Then element with xpath "//input[@id='sb_form_q']" should have attribute "value" as "Tomatoes"
 
+#comments
