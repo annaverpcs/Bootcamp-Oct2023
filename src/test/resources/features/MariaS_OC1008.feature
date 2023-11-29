@@ -40,5 +40,3 @@ Feature: Medicenter Test Scenarios Admin can add and cancel an appointment
     Then I click on element with xpath "//button[contains(text(),'Cancel appointment')]"
     And I wait for 1 sec
     Then element with xpath "//td//*[@data-date='2023-11-29']//*[contains(text(),'2p')]/..//div[contains(text(),'Maria Test')]" should not be present
-    Examples:
-      |  |

@@ -45,7 +45,7 @@ Feature: Medicenter Test Scenarios Admin and Patient Login Feature
     And I wait for element with xpath <xpath3> to be present
 
     Examples:
-      | email xpath1           | email                      | pass       | pass xpath                | xpath3
+      | email xpath          | email                      | pass       | pass xpath                | xpath3
       | "//input[@id='email']" | "administrator1@gmail.com" | "abs321"   | "//input[@id='password']" | "//span[contains(text(),'Invalid login credentials')]"
       | "//input[@id='email']" | "Ndministrator1@gmail.com" | "abc123"   | "//input[@id='password']" | "//span[contains(text(),'Invalid login credentials')]"
       | "//input[@id='email']" | "administrator1@gmail.com" | ""         | "//input[@id='password']" | "//span[contains(text(),'Invalid login credentials')]"
