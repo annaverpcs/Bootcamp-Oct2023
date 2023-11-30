@@ -1,15 +1,21 @@
 #Author : Anna Verkhovskaya
   #Jira ID
-@medicenter
+@medicenter @regression
 Feature: Medicenter Test Scenarios
 
-  @medicenter1
-  Scenario: Login as patient
+  Background:
     Given I open url "https://medicenter-qa2.vercel.app/"
     Then I should see page title as "Medicenter"
-            #login to app as patient
     Then I click on element with xpath "//button[contains(text(),'Login')]"
     And I wait for element with xpath "//a[contains(text(),'Back to home')]" to be present
+
+  @medicenter1 @regression
+  Scenario: Login as patient
+    #Given I open url "https://medicenter-qa2.vercel.app/"
+    #Then I should see page title as "Medicenter"
+            #login to app as patient
+    #Then I click on element with xpath "//button[contains(text(),'Login')]"
+    #And I wait for element with xpath "//a[contains(text(),'Back to home')]" to be present
     And I type "patient1@gmail.com" into element with xpath "//input[@id='email']"
     And I type "abc123" into element with xpath "//input[@id='password']"
     Then I click on element with xpath "//button[contains(text(),'Sign in')]"
@@ -17,12 +23,12 @@ Feature: Medicenter Test Scenarios
     Then I wait for element with xpath "//h1[contains(text(),'James Johnson')]" to be present
     And element with xpath "//h1[contains(text(),'James Johnson')]" should contain text "James Johnson"
 
-  @medicenter2
+  @medicenter2 @smoke
   Scenario Outline: Login to app data driven scenario
-    Given I open url "https://medicenter-qa2.vercel.app/"
-    Then I should see page title as "Medicenter"
-    Then I click on element with xpath "//button[contains(text(),'Login')]"
-    And I wait for element with xpath "//a[contains(text(),'Back to home')]" to be present
+   # Given I open url "https://medicenter-qa2.vercel.app/"
+    #Then I should see page title as "Medicenter"
+    #Then I click on element with xpath "//button[contains(text(),'Login')]"
+   # And I wait for element with xpath "//a[contains(text(),'Back to home')]" to be present
     #use data driven values for login page
     And I type <EmailAddress> into element with xpath "//input[@id='email']"
     And I type <Password> into element with xpath "//input[@id='password']"
@@ -41,11 +47,11 @@ Feature: Medicenter Test Scenarios
 
   @medicenter3
   Scenario: Make an appointment and Delete an appointment
-    Given I open url "https://medicenter-qa2.vercel.app/"
-    Then I should see page title as "Medicenter"
+    #Given I open url "https://medicenter-qa2.vercel.app/"
+    #Then I should see page title as "Medicenter"
             #login to app as patient
-    Then I click on element with xpath "//button[contains(text(),'Login')]"
-    And I wait for element with xpath "//a[contains(text(),'Back to home')]" to be present
+   # Then I click on element with xpath "//button[contains(text(),'Login')]"
+    #And I wait for element with xpath "//a[contains(text(),'Back to home')]" to be present
     And I type "patient1@gmail.com" into element with xpath "//input[@id='email']"
     And I type "abc123" into element with xpath "//input[@id='password']"
     Then I click on element with xpath "//button[contains(text(),'Sign in')]"
@@ -74,23 +80,6 @@ Feature: Medicenter Test Scenarios
     #verify that the appointment is deleted
     Then element with xpath "//p[contains(text(),'Unique appointment from AnnaV 1')]" should not be present
 
-  Scenario: Login as patient with Selenium WebDriver methods
-    #Given I open url "https://medicenter-qa2.vercel.app/"
-    Given AnnaV launch "MedicenterV2"
-   #  Then I should see page title as "Medicenter"
-     Then AnnaV page title is "Medicenter"
-
-    And I wait for 1 sec
-
-            #login to app as patient
-   # Then I click on element with xpath "//button[contains(text(),'Login')]"
-   # And I wait for element with xpath "//a[contains(text(),'Back to home')]" to be present
-   # And I type "patient1@gmail.com" into element with xpath "//input[@id='email']"
-   # And I type "abc123" into element with xpath "//input[@id='password']"
-   # Then I click on element with xpath "//button[contains(text(),'Sign in')]"
-   # Then I wait for element with xpath "//h1[contains(text(),'Medical Center')]" to be present
-    #Then I wait for element with xpath "//h1[contains(text(),'James Johnson')]" to be present
-   # And element with xpath "//h1[contains(text(),'James Johnson')]" should contain text "James Johnson"
 
 
 
