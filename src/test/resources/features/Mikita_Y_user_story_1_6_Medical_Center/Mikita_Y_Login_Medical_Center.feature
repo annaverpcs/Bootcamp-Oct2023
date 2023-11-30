@@ -257,3 +257,8 @@ Feature: Login Medical Center
     Then element with xpath "//a[contains(text(),'Back to home')]" should be present
     Then I click on element with xpath "//a[contains(text(),'Back to home')]"
     And I wait for element with xpath "//h2[text()='Login or create a new account to make an appointment']" to be present
+
+
+
+
+
