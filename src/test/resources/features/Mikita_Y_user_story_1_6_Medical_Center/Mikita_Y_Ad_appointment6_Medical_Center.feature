@@ -422,19 +422,34 @@ Feature: Add an appointment Medical Center
     When I click on element with xpath "//button[@type='submit']"
     Then I wait for element with xpath "//h3[contains(text(),'Monday 13 May 2024, 11:00')]" to be present
     # Delete an appointment
-    Then I click on element with xpath "//article[div//h3[contains(text(),'Monday 13 May 2024, 11:00')]]/div[@type='button']"
+    Then I click on element with xpath "//article[div//h3[contains(text(),'Monday 13 May 2024, 11:15')]]/div[@type='button']"
+    Then I wait for 1 sec
+    Then I click on element with xpath "//button[contains(text(),'Cancel appointment')]"
+    Then I click on element with xpath "//article[div//h3[contains(text(),'Monday 13 May 2024, 11:15')]]/div[@type='button']"
     Then I wait for 1 sec
     Then I click on element with xpath "//button[contains(text(),'Cancel appointment')]"
     And I wait for 1 sec
-    Then I click on element with xpath "//article[div//h3[contains(text(),'Monday 13 May 2024, 11:00')]]/div[@type='button']"
+    Then I click on element with xpath "//article[div//h3[contains(text(),'Monday 13 May 2024, 11:30')]]/div[@type='button']"
+    Then I wait for 1 sec
+    Then I click on element with xpath "//button[contains(text(),'Cancel appointment')]"
+    And I wait for 1 sec
+    Then I click on element with xpath "//article[div//h3[contains(text(),'Monday 13 May 2024, 13:45')]]/div[@type='button']"
     Then I wait for 1 sec
     Then I click on element with xpath "//button[contains(text(),'Cancel appointment')]"
     And I wait for 1 sec
     Then I click on element with xpath "//article[div//h3[contains(text(),'Monday 13 May 2024, 13:15')]]/div[@type='button']"
     Then I wait for 1 sec
     Then I click on element with xpath "//button[contains(text(),'Cancel appointment')]"
-    And I wait for 1 sec
-    Then I click on element with xpath "//article[div//h3[contains(text(),'Monday 13 May 2024, 13:15')]]/div[@type='button']"
+    Then I click on element with xpath "//article[div//h3[contains(text(),'Monday 13 May 2024, 11:00')]]/div[@type='button']"
+    Then I wait for 1 sec
+    Then I click on element with xpath "//button[contains(text(),'Cancel appointment')]"
+    Then I click on element with xpath "//article[div//h3[contains(text(),'Monday 13 May 2024, 11:00')]]/div[@type='button']"
+    Then I wait for 1 sec
+    Then I click on element with xpath "//button[contains(text(),'Cancel appointment')]"
+    Then I click on element with xpath "//article[div//h3[contains(text(),'Monday 13 May 2024, 11:00')]]/div[@type='button']"
+    Then I wait for 1 sec
+    Then I click on element with xpath "//button[contains(text(),'Cancel appointment')]"
+    Then I click on element with xpath "//article[div//h3[contains(text(),'Monday 13 May 2024, 11:00')]]/div[@type='button']"
     Then I wait for 1 sec
     Then I click on element with xpath "//button[contains(text(),'Cancel appointment')]"
     And I wait for 1 sec

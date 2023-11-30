@@ -12,6 +12,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = {"definitions", "support"},
         tags = "@medicenter" // same as VM option -Dcucumber..filter.tags="@predefined1 or @predefined2"
+
 )
 public class TestRunner {
     @BeforeClass
