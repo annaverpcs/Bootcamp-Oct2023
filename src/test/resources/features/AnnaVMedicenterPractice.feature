@@ -59,6 +59,7 @@ Feature: Medicenter Test Scenarios
     And I wait for 2 sec
     Then I click on element with xpath "//select[@name='employee_id']/..//option[6]"
     Then I type "11/23/2023" into element with xpath "//input[@id='date']"
+    And I wait for 2 sec
     Then I click on element with xpath "//button[contains(text(),'04:45 AM')]"
     Then I click on element with xpath "//button[contains(text(),'Save')]"
    #verify that appointment is created
@@ -72,8 +73,24 @@ Feature: Medicenter Test Scenarios
     And I wait for 1 sec
     #verify that the appointment is deleted
     Then element with xpath "//p[contains(text(),'Unique appointment from AnnaV 1')]" should not be present
-    And I wait for 10 sec
 
+  Scenario: Login as patient with Selenium WebDriver methods
+    #Given I open url "https://medicenter-qa2.vercel.app/"
+    Given AnnaV launch "MedicenterV2"
+   #  Then I should see page title as "Medicenter"
+     Then AnnaV page title is "Medicenter"
+
+    And I wait for 1 sec
+
+            #login to app as patient
+   # Then I click on element with xpath "//button[contains(text(),'Login')]"
+   # And I wait for element with xpath "//a[contains(text(),'Back to home')]" to be present
+   # And I type "patient1@gmail.com" into element with xpath "//input[@id='email']"
+   # And I type "abc123" into element with xpath "//input[@id='password']"
+   # Then I click on element with xpath "//button[contains(text(),'Sign in')]"
+   # Then I wait for element with xpath "//h1[contains(text(),'Medical Center')]" to be present
+    #Then I wait for element with xpath "//h1[contains(text(),'James Johnson')]" to be present
+   # And element with xpath "//h1[contains(text(),'James Johnson')]" should contain text "James Johnson"
 
 
 
