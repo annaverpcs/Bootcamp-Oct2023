@@ -87,6 +87,45 @@ Feature: Login Medical Center
     And I wait for element with xpath "//h1[text()='Medical Center']" to be present
     And I wait for element with xpath "//*[contains(text(),'James Johnson')]" to be present
 
+
+  @medicenterM
+    # Scenario is created using Mikita's predefined steps
+  Scenario: E2E (Login, Create, Delete, Logout)
+  Given Mikita launch "https://medicenter-qa2.vercel.app/"
+    Then Mikita wait 1 sec
+    Then Mikita should see page title "Medical center"
+    #Login
+    Then Mikita click "//button[contains(text(),'Login')]"
+    Then Mikita wait 1 sec
+    Then Mikita assert element with xpath "//a[contains(text(),'Back to home')]" precent
+    Then Mikita type "patient1@gmail.com" in field with xpath "//input[@id='email']"
+    Then Mikita type "abc123" in field with xpath "//input[@id='password']"
+    Then Mikita click "//button[@type='submit']"
+    Then Mikita wait 1 sec
+    Then Mikita assert element with xpath "//*[contains(text(),'My appointments')]" precent
+    # Create appointment
+    And Mikita click "//button[@type='button']"
+    And Mikita wait 1 sec
+    And Mikita type "teethache" in field with xpath "//textarea[@name='note']"
+    Then Mikita try diff doctors "specialist1"
+    Then Mikita wait 3 sec
+    And Mikita click "//option[@value='24b6d9ff-0742-450f-8d89-b083caad0336']"
+    And Mikita type "13/05/2024" in field with xpath "//input[@type='date']"
+    And Mikita wait 1 sec
+    And Mikita click "//button[@value='2024-05-13T09:00:00.000Z']"
+    And Mikita click "//button[@type='submit']"
+    And Mikita wait 1 sec
+    Then Mikita assert element with xpath "//article[div[h3[contains(text(),'Monday 13 May 2024, 11:00')]]//p[contains(text(),'teethache')]]" precent
+    Then Mikita click "//article[div[h3[contains(text(),'13 May 2024, 11:00')]]//p[contains(text(),'teethache')]]//div[@type='button']"
+    # Cancel appointmnet
+    Then Mikita click "//button[contains(text(),'Cancel appointment')]"
+    # Logout
+    Then Mikita click "//button[contains(text(),'Logout')]"
+    Then Mikita wait 1 sec
+    And Mikita assert element with xpath "//h2[text()='Login or create a new account to make an appointment']" precent
+    
+   
+
   @medicenterM
   Scenario: Login with valid email address and invalid password
     Given I open url "https://medicenter-qa2.vercel.app/"
