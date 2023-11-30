@@ -1,6 +1,6 @@
 f# Author Ruslana Deineka
   # Jira ID OC-135
-  # Medicenter
+   # Medicenter
 
 Feature: Log in as a patient
 
