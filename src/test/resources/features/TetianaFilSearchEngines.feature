@@ -6,7 +6,7 @@ Feature: Automation is begining
     Then I type "Car" into element with xpath "//input[@id='q']"
     Then I click on element with xpath "//button[@type='submit' and @id='button-addon2']"
     And I wait for 3 sec
-    Then
+
 
 
 Scenario:  Search Engine for wiki.com

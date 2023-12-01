@@ -77,7 +77,7 @@ Feature: Medicenter Test Scenarios
     Then element with xpath "//p[contains(text(),'too strong back pain!!!!!!!!!!')]" should not be present
     And I wait for 10 sec
 
-    @medicenter
+    @medicenter4
     Scenario: Create new specialist as administrator and Delete one
       Given I open url "https://medicenter-qa2.vercel.app/"
       Then I should see page title as "Medicenter"
@@ -115,5 +115,9 @@ Feature: Medicenter Test Scenarios
      Then element with xpath "//td[contains(text(),'Tommy Rommy')]" should not be present
 
 
-    
+  @medicenter5
+  Scenario: Update role and working hours for specialist
+    Given I open url "https://medicenter-qa2.vercel.app/admin"
+    Then I should see page title as "Medical Center"
+
 
