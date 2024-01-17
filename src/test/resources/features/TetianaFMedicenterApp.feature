@@ -117,7 +117,36 @@ Feature: Medicenter Test Scenarios
 
   @medicenter5
   Scenario: Update role and working hours for specialist
-    Given I open url "https://medicenter-qa2.vercel.app/admin"
-    Then I should see page title as "Medical Center"
+    Given I open url "https://medicenter-qa2.vercel.app/"
+    Then I should see page title as "Medicenter"
+            #login to app as admin
+Then I click on element with xpath "//button[contains(text(),'Login')]"
+    Then I wait for element with xpath "//a[contains(text(),'Back to home')]" to be present
+    Then I type "administrator2@gmail.com" into element with xpath " //input[@id='email']"
+    Then I type "abc123" into element with xpath "//input[@id='password']"
+    Then I click on element with xpath " //button[contains(text(),'Sign in')]"
+    # verification login
+  Then I wait for 2 sec
+    Then element with xpath "//h1[contains(text(),'Calvin Grant')]" should have text as "Calvin Grant"
+    # edit specialist role
+  Then I wait for element with xpath "//button[contains(text(),'Add specialist')]" to be present
+    Then I wait for element with xpath "//tbody/tr[4]" to be present
+    Then element with xpath "//tbody/tr[4]//span[text()='Ophthalmologist']" should be present
+    Then I click on element with xpath "//tbody/tr[4]//span[text()='edit']"
+    Then I wait for 2 sec
+    Then I wait for element with xpath "//div[@role='dialog']" to be present
+Then element with xpath "//span[text()='Edit specialist info']" should be present
+    Then I click on element with xpath "//select[@name='role']"
+    Then I click on element with xpath "//option[@value='doctor']"
+    Then I click on element with xpath "//button[contains(text(),'Save')]"
+    #verification chandes
+  Then I wait for 5 sec
+    Then I wait for element with xpath "//button[contains(text(),'Add specialist')]" to be present
+    Then I wait for 10 sec
+    Then element with xpath "/tbody/tr[4]//span[contains(text(),'Doctor')]" should have text as "Doctor"
+
+
+  
+   
 
 
