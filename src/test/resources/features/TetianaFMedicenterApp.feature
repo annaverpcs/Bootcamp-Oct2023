@@ -145,8 +145,49 @@ Then element with xpath "//span[text()='Edit specialist info']" should be presen
     Then I wait for 10 sec
     Then element with xpath "/tbody/tr[4]//span[contains(text(),'Doctor')]" should have text as "Doctor"
 
+    @medicenter6
+    Scenario: Create appointment as admin and delete
+      Given I open url "https://medicenter-qa2.vercel.app/"
+      Then I should see page title as "Medicenter"
+     #login to app as administrator
+      Then I click on element with xpath "//button[contains(text(),'Login')] "
+      Then I wait for element with xpath "//a[contains(text(),'Back to home')]" to be present
+      And I type "administrator2@gmail.com" into element with xpath "//input[@id='email']"
+      And I type "abc123" into element with xpath "//input[@id='password']"
+      Then I click on element with xpath "//button[contains(text(),'Sign in')]"
+      Then I wait for element with xpath "//h1[contains(text(),'Calvin Grant')]" to be present
+      And I wait for element with xpath "//h1[contains(text(),'Medical Center')]" to be present
+      #Create appointmet
+  Then I wait for element with xpath "//button[text()='Appointments']" to be present
+      Then I click on element with xpath "//button[text()='Appointments']"
+      Then I wait for element with xpath "//button[text()='Add appointment']" to be present
+      Then I click on element with xpath "//button[text()='Add appointment']"
+      Then I wait for element with xpath "//span[text()='New appointment']" to be present
+      Then I type "Alice Wonderland" into element with xpath "//input[@id='user_name']"
+      Then I type "Tanya first visit" into element with xpath "//textarea[@id='note']"
+      Then I mouse over element with xpath "//select[@name='employee_id']"
+      Then I click on element with xpath "//select/option[@value='4bbb674b-7fbd-4246-983a-9e93d659a3c1']"
+      Then I type "02/10/2024" into element with xpath "//input[@id='date']"
+      Then I click on element with xpath " //button[contains(text(),'03:00 AM')]"
+      Then I click on element with xpath "//button[contains(text(),'Save')]"
+      #verification creating appointment
+  Then I wait for 2 sec
+      Then I wait for element with xpath "//button[text()='Add appointment']" to be present
+      Then I wait for element with xpath "//a/div[text()='Alice Wonderland']" to be present
+      Then I click on element with xpath "//a/div[text()='Alice Wonderland']"
+      Then I wait for 2 sec
+      Then I wait for element with xpath "//span[text()='Appointment summary']" to be present
+      Then I click on element with xpath "//button[text()='Cancel appointment']"
+      # verification deleting
+  Then I wait for 2 sec
+      Then I wait for element with xpath "//a/div[text()='Alice Wonderland']" to not be present
+
+
+
+
+
 
   
-   
+
 
 
